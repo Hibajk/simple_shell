@@ -1,25 +1,25 @@
 #include "shell.h"
 
 /**
- * _exec - function that executes a command
+ * _execution - function that executes a command
  * @command: command to execute
  * @argv: name of the shell
  * @nmbr: a counter
  * Return: return the status
  */
 
-int _exec(char **command, char **argv, int nmbr)
+int _execution(char **command, char **argv, int nmbr)
 {
     char *fcmd;
     pid_t child;
     int status;
 
-    fcmd = _getpath(command[0]);
+    fcmd = _path(command[0]);
     if (!fcmd)
     {
-        prerror(argv[0], command[0], nmbr);
+        perror(argv[0], command[0], nmbr);
         free(fcmd);
-        Fr2Darray(command);
+        freearr(command);
         return 127;
     }
 
@@ -28,7 +28,7 @@ int _exec(char **command, char **argv, int nmbr)
     {
         perror("fork");
         free(fcmd);
-        Fr2Darray(command);
+        freearr(command);
         return 127;
     }
 
@@ -37,7 +37,7 @@ int _exec(char **command, char **argv, int nmbr)
         if (execve(fcmd, command, environ) == -1)
         {
             perror("execve");
-            Fr2Darray(command);
+            freearr(command);
             free(fcmd);
             exit(127);
         }
@@ -45,7 +45,7 @@ int _exec(char **command, char **argv, int nmbr)
     else
     {
         waitpid(child, &status, 0);
-        Fr2Darray(command);
+        freearr(command);
         free(fcmd);
     }
 

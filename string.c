@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * _strdup - duplicates a string
+ * _dupstr - duplicates a string
  * @str: the string to duplicate
  * Return: a pointer to the duplicated string, or NULL on failure
  */
 
-char *_strdup(const char *str)
+char *_dupstr(const char *str)
 {
     if (str == NULL)
         return NULL;
@@ -24,14 +24,14 @@ char *_strdup(const char *str)
 }
 
 /**
- * _strcmp - compares two strings
+ * _cmpstr - compares two strings
  * @s1: the first string
  * @s2: the second string
  * Return: an integer less than, equal to, or greater than zero
  * if s1 is found, respectively, to be less than, to match, or be greater
  */
 
-int _strcmp(const char *s1, const char *s2)
+int _cmpstr(const char *s1, const char *s2)
 {
     while (*s1 && (*s1 == *s2))
     {
@@ -43,12 +43,12 @@ int _strcmp(const char *s1, const char *s2)
 }
 
 /**
- * _strlen - measures the length of a string
+ * _lenstr - measures the length of a string
  * @s: the string to measure
  * Return: the length of the string
  */
 
-size_t _strlen(const char *s)
+size_t _lenstr(const char *s)
 {
     size_t len = 0;
 
@@ -59,13 +59,13 @@ size_t _strlen(const char *s)
 }
 
 /**
- * _strcat - concatenates two strings
+ * _catstr - concatenates two strings
  * @dest: the destination string
  * @src: the source string
  * Return: a pointer to the resulting string (dest)
  */
 
-char *_strcat(char *dest, const char *src)
+char *_catstr(char *dest, const char *src)
 {
     char *p = dest;
 
@@ -84,13 +84,13 @@ char *_strcat(char *dest, const char *src)
 }
 
 /**
- * _strcpy - copies a string to another
+ * _cpystr - copies a string to another
  * @dest: the destination string
  * @src: the source string
  * Return: a pointer to the resulting string (dest)
  */
 
-char *_strcpy(char *dest, const char *src)
+char *_cpystr(char *dest, const char *src)
 {
     size_t i = 0;
 

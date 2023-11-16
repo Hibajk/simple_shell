@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * _itoa - converts an integer to ASCII
+ * _intoa - converts an integer to ASCII
  * @n: the integer
  * Return: a dynamically allocated string containing the ASCII represe
  */
 
-char *_itoa(int n)
+char *_intoa(int n)
 {
     char buffer[20];
     int i = 0;
@@ -30,12 +30,12 @@ char *_itoa(int n)
 }
 
 /**
- * reverse_string -  function that reverses a string in place
+ * reverse_str -  function that reverses a string in place
  * @str: the string
  * @len: length of the string
  */
 
-void reverse_string(char *str, int len)
+void reverse_str(char *str, int len)
 {
     int i = 0, nd = len - 1;
 

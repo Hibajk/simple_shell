@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * free_2d_array - frees a 2D array of strings
+ * freearr - frees a 2D array of strings
  * @arr: the 2D array to be freed
  * Return: none
  */
 
-void free_2d_array(char **arr)
+void freearr(char **arr)
 {
     if (!arr)
         return;

@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * prenv - prints environment variables
+ * printenv - prints environment variables
  * @command: command (not used in this function)
  * @status: exit status
  */
 
-void prenv(char **command, int *status)
+void printenv(char **command, int *status)
 {
     int i = 0;
 
@@ -17,6 +17,6 @@ void prenv(char **command, int *status)
         i++;
     }
 
-    Fr2Darray(command);
+    freearr(command);
     *status = 0;
 }

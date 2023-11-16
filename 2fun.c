@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * positive_num - checks if all characters in the string are digits
+ * positive_int - checks if all characters in the string are digits
  * @str: string to verify
  * Return: 1 if str consists of only digits, otherwise 0
  */
 
-int positive_num(char *str)
+int positive_int(const char *str)
 {
     if (!str)
         return 0;
@@ -26,7 +26,7 @@ int positive_num(char *str)
  * Return: converted integer value
  */
 
-int _atoi(char *str)
+int _atoi(const char *str)
 {
     int i, num = 0;
 

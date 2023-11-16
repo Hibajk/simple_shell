@@ -3,12 +3,12 @@
 #include <stdlib.h>
 
 /**
- * command_tokenizer - tokenizes a string into an array of strings
+ * cmd_tok - tokenizes a string into an array of strings
  * @line: input string
  * Return: a pointer to an array of strings, or NULL on failure
  */
 
-char **command_tokenizer(const char *line)
+char **cmd_tok(const char *line)
 {
     char *token, *dup;
     char **command;

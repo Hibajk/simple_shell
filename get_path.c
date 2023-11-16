@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * _getenv - function that gets the value of an environment variable
+ * _geten - function that gets the value of an environment variable
  * @key: the name of the environment variable
  * Return: the value of the environment variable, or NULL if not found
  */
 
-char *_getenv(const char *key)
+char *_geten(const char *key)
 {
     char *tmp, *env_key, *value, *env;
     int i = 0;

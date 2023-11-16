@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * prompt_shell - reads a line from the user and prints a prompt
+ * pro_shell - reads a line from the user and prints a prompt
  *
  * Return: the line read from the user, or NULL on failure
  */
 
-char *prompt_shell(void)
+char *pro_shell(void)
 {
     char *line = NULL;
     size_t len = 0;

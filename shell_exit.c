@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- * exit_shell - a function that exits the shell
+ * shell_exit - a function that exits the shell
  * @command: the given command
  * @argv: arguments
  * @status: exit status
  * @idx: index of the command
  */
 
-void exit_shell(char **command, char **argv, int *status, int idx)
+void shell_exit(char **command, char **argv, int *status, int idx)
 {
     int exit_value = *status;
     char *index, mssg[] = ": exit: Illegal number: ";
@@ -16,10 +16,10 @@ void exit_shell(char **command, char **argv, int *status, int idx)
 
     if (command[1])
     {
-        if (!positive_num(command[1]))
+        if (!positive_int(command[1]))
         {
             snprintf(idx_str, sizeof(idx_str), "%d", idx);
-            index = _itoa(idx);
+            index = _intoa(idx);
 
             write(STDERR_FILENO, argv[0], _strlen(argv[0]));
             write(STDERR_FILENO, ": ", 2);
@@ -29,7 +29,7 @@ void exit_shell(char **command, char **argv, int *status, int idx)
             write(STDERR_FILENO, "\n", 1);
 
             free(index);
-            Fr2Darray(command);
+            freearr(command);
             *status = 2;
             return;
         }
@@ -38,6 +38,6 @@ void exit_shell(char **command, char **argv, int *status, int idx)
     }
 
     free(command);
-    Fr2Darray(command);
+    freearr(command);
     exit(exit_value);
 }

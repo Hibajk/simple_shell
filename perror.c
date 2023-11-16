@@ -1,16 +1,16 @@
 #include "shell.h"
 
 /**
- * prerror - prints an error message
+ * perror - prints an error message
  * @sname: name of the shell
  * @cmd: the command
  * @nmbr: a counter
  */
-void prerror(char *sname, char *cmd, int nmbr)
+void perror(char *sname, char *cmd, int nmbr)
 {
     char *index, mssg[] = ": not found\n";
 
-    index = _itoa(nmbr);
+    index = _intoa(nmbr);
 
     write(STDERR_FILENO, sname, _strlen(sname));
     write(STDERR_FILENO, ": ", 2);

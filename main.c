@@ -20,7 +20,7 @@ int main(int ac, char **argv)
 
     while (1)
     {
-        line = prompt_shell();
+        line = pro_shell();
         if (line == NULL)
         {
             if (isatty(STDIN_FILENO))
@@ -30,7 +30,7 @@ int main(int ac, char **argv)
         }
 
         nmbr++;
-        command = command_tokenizer(line);
+        command = cmd_tok(line);
         if (!command)
         {
             free(line);
@@ -40,16 +40,16 @@ int main(int ac, char **argv)
         if (_strcmp(command[0], "exit") == 0)
         {
             free(line);
-            Fr2Darray(command);
+            freearr(command);
             exit(status);
         }
 
         if (_strcmp(command[0], "env") == 0)
-            prenv(command, &status);
+            printenv(command, &status);
         else
-            status = _exec(command, argv, nmbr);
+            status = _execution(command, argv, nmbr);
 
         free(line);
-        Fr2Darray(command);
+        freearr(command);
     }
 }
