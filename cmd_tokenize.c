@@ -4,55 +4,49 @@
 
 /**
  * cmd_tok - tokenizes a string into an array of strings
- * @line: input string
+ * @inputString: input string to be tokenized
  * Return: a pointer to an array of strings, or NULL on failure
  */
-
-char **cmd_tok(const char *line)
+char **cmd_tok(char *inputString)
 {
-    char *token, *dup;
-    char **command;
-    int cnt = 0;
-    int i = 0;
+	char *token = NULL, *duplicate = NULL, **cmd_arr = NULL;
+	int token_count = 0;
+	int i = 0;
 
-    if (!line)
-        return NULL;
+	if (!inputString)
+		return (NULL);
 
-    dup = _strdup(line);
-    if (!dup)
-        return NULL;
+	duplicate = _strdup(inputString);
+	token = strtok(duplicate, " \t\n");
+	if (token == NULL)
+	{
+		free(inputString);
+		free(duplicate);
+		return (NULL);
+	}
 
-    token = strtok(dup, " \t\n");
-    if (!token)
-    {
-        free(dup);
-        return NULL;
-    }
+	while (token)
+	{
+		token_count++;
+		token = strtok(NULL, " \t\n");
+	}
+	free(duplicate);
 
-    while (token)
-    {
-        cnt++;
-        token = strtok(NULL, " \t\n");
-    }
+	cmd_arr = malloc(sizeof(char *) * (token_count + 1));
+	if (cmd_arr == NULL)
+	{
+		free(inputString);
+		return (NULL);
+	}
+	token = strtok(inputString, " \t\n");
+	while (token)
+	{
+		cmd_arr[i] = _strdup(token);
+		token = strtok(NULL, " \t\n");
+		i++;
+	}
 
-    free(dup);
-    command = malloc(sizeof(char *) * (cnt + 1));
-    if (!command)
-        return NULL;
-
-    token = strtok(line, " \t\n");
-    while (token)
-    {
-        command[i] = _strdup(token);
-        if (!command[i])
-        {
-            free_2d_array(command);
-            return NULL;
-        }
-        token = strtok(NULL, " \t\n");
-        i++;
-    }
-
-    command[i] = NULL;
-    return command;
+	free(inputString);
+	cmd_arr[i] = NULL;
+	return (cmd_arr);
 }
