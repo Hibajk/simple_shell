@@ -1,21 +1,24 @@
 #include "shell.h"
 
 /**
- * freearr - frees a 2D array of strings
- * @arr: the 2D array to be freed
- * Return: none
+ * free2DArray - Frees a 2D array
+ * @array: The 2D array to be freed
+ * Return: None
  */
-
-void freearr(char **arr)
+void free2DArray(char **array)
 {
-    if (!arr)
-        return;
+	int i = 0;
 
-    for (int i = 0; arr[i]; i++)
-    {
-        free(arr[i]);
-        arr[i] = NULL;
-    }
+	if (!array)
+		return;
 
-    free(arr), arr = NULL;
+	while (array[i])
+	{
+		free(array[i]);
+		array[i] = NULL;
+		i++;
+	}
+
+	free(array);
+	array = NULL;
 }
