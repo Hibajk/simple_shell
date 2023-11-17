@@ -2,52 +2,40 @@
 
 /**
  * _execution - function that executes a command
- * @command: command to execute
+ * @cmd: command to execute
  * @argv: name of the shell
- * @nmbr: a counter
+ * @number: the counter
  * Return: return the status
  */
 
-int _execution(char **command, char **argv, int nmbr)
+int _execution(char **cmd, char **argv, int number)
 {
-    char *fcmd;
-    pid_t child;
-    int status;
+	char *fcommand;
+	pid_t child;
+	int status;
 
-    fcmd = _path(command[0]);
-    if (!fcmd)
-    {
-        perror(argv[0], command[0], nmbr);
-        free(fcmd);
-        freearr(command);
-        return 127;
-    }
-
-    child = fork();
-    if (child == -1)
-    {
-        perror("fork");
-        free(fcmd);
-        freearr(command);
-        return 127;
-    }
-
-    if (child == 0)
-    {
-        if (execve(fcmd, command, environ) == -1)
-        {
-            perror("execve");
-            freearr(command);
-            free(fcmd);
-            exit(127);
-        }
-    }
-    else
-    {
-        waitpid(child, &status, 0);
-        freearr(command);
-        free(fcmd);
-    }
-
-    return WEXITSTATUS(status);
+	fcommand = _getpath(cmd[0]);
+	if (!fcommand)
+	{
+		prerror(argv[0], cmd[0], number);
+		free2DArray(cmd);
+		free(fcommand), fcommand = NULL;
+		return (127);
+	}
+	child = fork();
+	if (child == 0)
+	{
+		if (execve(fcommand, cmd, environ) == -1)
+		{
+			free(fcommand), fcommand = NULL;
+			free2DArray(cmd);
+		}
+	}
+	else
+	{
+		waitpid(child, &status, 0);
+		free2DArray(cmd);
+		free(fcommand), fcommand = NULL;
+	}
+	return (WEXITSTATUS(status));
 }
