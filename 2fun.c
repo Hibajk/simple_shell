@@ -1,40 +1,40 @@
 #include "shell.h"
 
 /**
- * positive_int - checks if all characters in the string are digits
- * @str: string to verify
- * Return: 1 if str consists of only digits, otherwise 0
+ * pos_number - cheks if the input string represents a positive number
+ * @strg: the string to be verified
+ * Return: 1 if string is a positive number, 0 otherwise
  */
 
-int positive_int(const char *str)
+int pos_number(char *strg)
 {
-    if (!str)
-        return 0;
+	int i;
 
-    for (int i = 0; str[i]; i++)
-    {
-        if (str[i] < '0' || str[i] > '9')
-            return 0;
-    }
+	if (!strg)
+		return (0);
+	for (i = 0; strg[i]; i++)
+	{
 
-    return 1;
+		if (strg[i] < '0' || strg[i] > '9')
+			return (0);
+	}
+	return (1);
 }
 
 /**
- * _atoi - convert string to integer
- * @str: string
- * Return: converted integer value
+ * atoi - converts a string to an integer
+ * @strg: the input string to be converted
+ * Return: the return value
  */
 
-int _atoi(const char *str)
+int atoi(char *strg)
 {
-    int i, num = 0;
+	int i, number = 0;
 
-    for (int i = 0; str[i]; i++)
-    {
-        num *= 10;
-        num += (str[i] - '0');
-    }
-
-    return num;
+	for (i = 0; strg[i]; i++)
+	{
+		number *= 10;
+		number += (strg[i] - '0');
+	}
+	return (number);
 }
