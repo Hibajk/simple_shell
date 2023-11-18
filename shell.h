@@ -15,24 +15,24 @@
 extern char **environ;
 
 char *pro_shell(void);
-char **cmd_tok(const char *line);
-int _execution(char **command, char **argv, int nmbr);
+char **cmd_tok(char *inputString);
+int _execution(char **cmd, char **argv, int number);
 char *_geten(const char *key);
-char *_path(char *command);
+char *_path(char *cmd);
 
-void freearr(char **arr);
-void perror(char *sname, char *cmd, int nmbr);
+void free2DArray(char **array);
+void perror(char *shelln, char *command, int number);
 char *_intoa(int n);
-void reverse_str(char *str, int len);
-void printenv(char **command, int *status);
-void shell_exit(char **command, char **argv, int *status, int idx);
-int positive_int(const char *str);
-int _atoi(const char *str);
+void reverse_str(char *string, int ln);
+void printenv(char **cmd, int *sts);
+void shell_exit(char **cmd, char **argv, int *sts, int idx);
+int pos_number(char *strg);
+int atoi(char *strg);
 
-char *_dupstr(const char *str);
+char *_dupstr(char *string)
 int _cmpstr(const char *s1, const char *s2);
-size_t _lenstr(const char *s);
-char *_catstr(char *dest, const char *src);
-char *_cpystr(char *dest, const char *src);
+int _lenstr(char *s);
+char *_catstr(char *dest, char *source);
+char _cpystr(char *dest, char *source);
 
 #endif
