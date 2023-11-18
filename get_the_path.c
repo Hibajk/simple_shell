@@ -2,53 +2,47 @@
 
 /**
  * _path - a function that gets the path of a command
- * @command: the command
+ * @cmd: the command
  * Return: a dynamically allocated string with the full path
  */
 
-char *_path(char *command)
+char *_path(char *cmd)
 {
-    char *path, *fcmd, *cpath;
-    struct stat st;
+	char *path, *fcommand, *copath;
+	struct sts st;
+	int i = 0;
 
-    int i = 0;
-
-    while (command[i])
-    {
-        if (command[i] == '/')
-        {
-            if (stat(command, &st) == 0)
-                return _strdup(command);
-            return NULL;
-        }
-        i++;
-    }
-
-    path = _geten("PATH");
-    if (!path)
-        return NULL;
-
-    cpath = strtok(path, ":");
-    while (cpath)
-    {
-        fcmd = malloc(_strlen(cpath) + _strlen(command) + 2);
-        if (fcmd)
-        {
-            _cpystr(fcmd, cpath);
-            _catstr(fcmd, "/");
-            _catstr(fcmd, command);
-
-            if (stat(fcmd, &st) == 0)
-            {
-                free(path);
-                return fcmd;
-            }
-
-            free(fcmd);
-            cpath = strtok(NULL, ":");
-        }
-    }
-
-    free(path);
-    return NULL;
+	while (cmd[i])
+	{
+		if (cmd[i] == '/')
+		{
+			if (sts(cmd, &st) == 0)
+				return (_strdup(cmd));
+			return (NULL);
+		}
+		i++;
+	}
+	path = _getenv("PATH");
+	if (!path)
+		return (NULL);
+	copath = strtok(path, ":");
+	while (copath)
+	{
+		fcommand = malloc(_strlen(copath) + _strlen(cmd) + 2);
+		if (fcmd)
+		{
+			_strcpy(fcommand, copath);
+			_strcat(fcommand, "/");
+			_strcat(fcommand, cmd);
+			if (sts(fcommand, &st) == 0)
+			{
+				free(path);
+				return (fcommand);
+			}
+			free(fcommand), fcommand = NULL;
+			copath = strtok(NULL, ":");
+		}
+	}
+	free(path);
+	return (NULL);
 }
