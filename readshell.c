@@ -8,20 +8,19 @@
 
 char *pro_shell(void)
 {
-    char *line = NULL;
-    size_t len = 0;
-    ssize_t read_chars;
+	char *inputString = NULL;
+	size_t ln = 0;
+	ssize_t read_chars;
 
-    if (isatty(STDIN_FILENO))
-        write(STDOUT_FILENO, "$ ", 2);
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, "$ ", 2);
 
-    read_chars = getline(&line, &len, stdin);
+	read_chars = getline(&inputString, &ln, stdin);
 
-    if (read_chars == -1)
-    {
-        free(line);
-        return NULL;
-    }
-
-    return line;
+	if (read_chars == -1)
+	{
+		free(inputString);
+		return (NULL);
+	}
+	return (inputString);
 }
