@@ -2,25 +2,26 @@
 
 /**
  * _dupstr - duplicates a string
- * @str: the string to duplicate
+ * @string: the string to duplicate
  * Return: a pointer to the duplicated string, or NULL on failure
  */
 
-char *_dupstr(const char *str)
+char *_dupstr(char *string)
 {
-    if (str == NULL)
-        return NULL;
+	char *ptrn;
+	int i, ln = 0;
 
-    size_t len = _strlen(str);
-    char *ptr = malloc(sizeof(char) * (len + 1));
+	if (string == NULL)
+		return (NULL);
+	while (string[ln])
+		ln++;
 
-    if (ptr == NULL)
-        return NULL;
-
-    for (size_t i = 0; i <= len; i++)
-        ptr[i] = str[i];
-
-    return ptr;
+	ptrn = malloc(sizeof(char) * (ln + 1));
+	if (ptrn == NULL)
+		return (NULL);
+	for (i = 0; i <= ln; i++)
+		ptrn[i] = string[i];
+	return (ptrn);
 }
 
 /**
@@ -33,13 +34,13 @@ char *_dupstr(const char *str)
 
 int _cmpstr(const char *s1, const char *s2)
 {
-    while (*s1 && (*s1 == *s2))
-    {
-        s1++;
-        s2++;
-    }
+while (*s1 && (*s1 == *s2))
+{
+s1++;
+s2++;
+}
 
-    return (int)(*s1) - (int)(*s2);
+return ((int)*s1 - (int)*s2);
 }
 
 /**
@@ -48,58 +49,54 @@ int _cmpstr(const char *s1, const char *s2)
  * Return: the length of the string
  */
 
-size_t _lenstr(const char *s)
+int _lenstr(char *s)
 {
-    size_t len = 0;
+	int ln = 0;
 
-    while (s[len] != '\0')
-        len++;
-
-    return len;
+	while (s[ln])
+		ln++;
+	return (ln);
 }
 
 /**
  * _catstr - concatenates two strings
  * @dest: the destination string
- * @src: the source string
+ * @source: the source string
  * Return: a pointer to the resulting string (dest)
  */
 
-char *_catstr(char *dest, const char *src)
+char *_catstr(char *dest, char *source)
 {
-    char *p = dest;
+	char *pp = dest;
 
-    while (*p)
-        p++;
-
-    while (*src)
-    {
-        *p = *src;
-        p++;
-        src++;
-    }
-
-    *p = '\0';
-    return dest;
+	while (*pp)
+		pp++;
+	while (*source)
+	{
+		*pp = *source;
+		pp++;
+		source++;
+	}
+	*pp = '\0';
+	return (dest);
 }
 
 /**
  * _cpystr - copies a string to another
  * @dest: the destination string
- * @src: the source string
+ * @source: the source string
  * Return: a pointer to the resulting string (dest)
  */
 
-char *_cpystr(char *dest, const char *src)
+char _cpystr(char *dest, char *source)
 {
-    size_t i = 0;
+	int i = 0;
 
-    while (src[i] != '\0')
-    {
-        dest[i] = src[i];
-        i++;
-    }
-
-    dest[i] = '\0';
-    return dest;
+	while (source[i])
+	{
+		dest[i] = source[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
