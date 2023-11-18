@@ -2,22 +2,22 @@
 
 /**
  * perror - prints an error message
- * @sname: name of the shell
- * @cmd: the command
- * @nmbr: a counter
+ * @shelln: name of the shell
+ * @command: the command
+ * @number: a counter
  */
-void perror(char *sname, char *cmd, int nmbr)
+void perror(char *shelln, char *command, int number)
 {
-    char *index, mssg[] = ": not found\n";
+	char *index, mssg[] = ": not found\n";
 
-    index = _intoa(nmbr);
+	index = _intoa(nmbr);
 
-    write(STDERR_FILENO, sname, _strlen(sname));
-    write(STDERR_FILENO, ": ", 2);
-    write(STDERR_FILENO, index, _strlen(index));
-    write(STDERR_FILENO, ": ", 2);
-    write(STDERR_FILENO, cmd, _strlen(cmd));
-    write(STDERR_FILENO, mssg, _strlen(mssg));
+	write(STDERR_FILENO, shelln, _strlen(shelln));
+	write(STDERR_FILENO, ": ", 2);
+	write(STDERR_FILENO, index, _strlen(index));
+	write(STDERR_FILENO, ": ", 2);
+	write(STDERR_FILENO, command, _strlen(command));
+	write(STDERR_FILENO, mssg, _strlen(mssg));
 
-    free(index);
+	free(index);
 }
