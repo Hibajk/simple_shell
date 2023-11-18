@@ -8,43 +8,43 @@
 
 char *_intoa(int n)
 {
-    char buffer[20];
-    int i = 0;
+	char buff[20];
+	int i = 0;
 
-    if (n == 0)
-    {
-        buffer[i++] = '0';
-    }
-    else
-    {
-        while (n > 0)
-        {
-            buffer[i++] = (n % 10) + '0';
-            n /= 10;
-        }
-    }
-
-    buffer[i] = '\0';
-    reverse_string(buffer, i);
-    return _strdup(buffer);
+	if (n == 0)
+		buff[i++] = '0';
+	else
+	{
+		while (n > 0)
+		{
+			buff[i++] = (n % 10) + '0';
+			n /= 10;
+		}
+	}
+	buff[i] = '\0';
+	reverse_string(buff, i);
+	return (_strdup(buff));
 }
 
 /**
  * reverse_str -  function that reverses a string in place
- * @str: the string
- * @len: length of the string
+ * @string: the string
+ * @ln: length of the string
  */
 
-void reverse_str(char *str, int len)
+void reverse_str(char *string, int ln)
 {
-    int i = 0, nd = len - 1;
+	char temp;
+	int i = 0, nd = ln - 1;
 
-    while (i < nd)
-    {
-        char tmp = str[i];
-        str[i] = str[nd];
-        str[nd] = tmp;
-        i++;
-        nd--;
-    }
+	while (i < nd)
+	{
+		temp = string[i];
+		string[i] = string[nd];
+		string[nd] = temp;
+		i++;
+		nd--;
+	}
+
+
 }
