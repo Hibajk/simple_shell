@@ -8,25 +8,25 @@
 
 char *_geten(const char *key)
 {
-    char *tmp, *env_key, *value, *env;
-    int i = 0;
+char *tmp, *env_key, *value, *env;
+int i = 0;
 
-    while (environ[i])
-    {
-        tmp = _strdup(environ[i]);
-        env_key = strtok(tmp, "=");
+while (environ[i])
+{
+tmp = _strdup(environ[i]);
+env_key = strtok(tmp, "=");
 
-        if (_strcmp(env_key, key) == 0)
-        {
-            value = strtok(NULL, "\n");
-            env = _strdup(value);
-            free(tmp);
-            return env;
-        }
+if (_strcmp(env_key, key) == 0)
+{
+value = strtok(NULL, "\n");
+env = _strdup(value);
+free(tmp);
+return (env);
+}
 
-        free(tmp);
-        i++;
-    }
+free(tmp);
+i++;
+}
 
-    return NULL;
+return (NULL);
 }
