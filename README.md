@@ -317,14 +317,3 @@ $
 * Pair programming and team work
 * Building a test suite to check our own code
 
-
-## Authors ##
-👤 `MOSURO KANYINSOLA OLUBUNMI`
-
-- GitHub: [Mosuro1911](https://github.com/Mosuro1911)
-
-👤 `BESTHOR IGBE`
-
-- GitHub: [besthor](https://github.com/besthor)
-
-
